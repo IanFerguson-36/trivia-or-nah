@@ -4,33 +4,44 @@ var questionScreen = document.getElementById("question-screen");
 var currentQIndex = 0;
 var questions = [
   {
-    question: "Does this work? ",
-    answers: ["yes", "no", "absolutely not", "sure"],
+    question: "Commonly used data types DO NOT include ",
+    answers: ["string", "boolean", "alerts", "numbers"],
+    solution: "alerts",
+  },
+  {
+    question: "The conditions in an if/else statement is enclosed within____. ",
+    answers: ["quotes", "curly bracketts", "parentheses"],
+    solution: "parentheses",
+  },
+  {
+    question: "Arrays in JavaScript can be used to store ___.",
+    answers: [
+      "numbers and strings",
+      "other arrays",
+      "booleans",
+      "all of the above",
+    ],
+    solution: "all of the above",
+  },
+  {
+    question:
+      "String values must be enclosed within ___ when being assigned to variables. ",
+    answers: ["commas", "curly brackett", "quotes", "a waffle iron"],
     solution: "yes",
   },
   {
-    question: "Does this not work? ",
-    answers: ["yes", "no", "absolutely not", "sure"],
-    solution: "yes",
-  },
-  {
-    question: "Does this work? ",
-    answers: ["yes", "no", "absolutely not", "sure"],
-    solution: "yes",
-  },
-  {
-    question: "Does this work? ",
-    answers: ["yes", "no", "absolutely not", "sure"],
-    solution: "yes",
-  },
-  {
-    question: "Does this work? ",
-    answers: ["yes", "no", "absolutely not", "sure"],
-    solution: "yes",
+    question:
+      "A very useful tool used during development and debugging for printing content to the debugger is: ",
+    answers: [
+      "philip's head screwdriver",
+      "console.log",
+      "event listener",
+      "jQuery",
+    ],
+    solution: "console.log",
   },
 ];
 
-//DOM ELEMENTS
 var questionText = document.getElementById("question-text");
 var choicesDiv = document.getElementById("choices");
 var verdict = document.getElementById("verdict");
@@ -45,7 +56,6 @@ function startGame() {
 function disiplayQuestion() {
   choicesDiv.textContent = "";
   questionText.textContent = questions[currentQIndex].question;
-  //   console.log(questions[currentQIndex]);.
 
   var thisAnswers = questions[currentQIndex].answers;
   for (var i = 0; i < thisAnswers.length; i++) {
@@ -66,7 +76,6 @@ function evaluateAnswer(event) {
     verdict.textContent = "Incorrect!";
   }
 
-  //check if current index is the last one
   if (currentQIndex < questions.length - 1) {
     currentQIndex++;
     var nextButton = document.createElement("button");
