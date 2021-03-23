@@ -2,56 +2,59 @@
 var startButton = document.getElementById('start-button');
 var startPage = document.getElementById('start-page')
 var questionScreen = document.getElementById('question-screen');
+var currentQIndex=0;
+var questions= [{
+    question:"Does this work? ",
+    answers : ["yes","no","absolutely not" ],
+    solution: "yes",
+
+},
+{
+    question:"Does this work? ",
+    answers : ["yes","no","absolutely not" ],
+    solution: "yes",
+
+},
+{
+    question:"Does this work? ",
+    answers : ["yes","no","absolutely not" ],
+    solution: "yes",
+
+},
+{
+    question:"Does this work? ",
+    answers : ["yes","no","absolutely not" ],
+    solution: "yes",
+
+},
+{
+    question:"Does this work? ",
+    answers : ["yes","no","absolutely not" ],
+    solution: "yes",
+
+},
+
+
+];
+var qAndA=document.getElementById("q&a-container");
+
+
+
 
 startButton.addEventListener("click", startGame)
 
 function startGame(){
     startPage.classList.add('hidden')
     questionScreen.classList.remove('hidden')
-
-   
-
-
-}
-
-// Quiz Objects
-var q1 ={
-    question:" ",
-    answers : [ ],
-    solution: answers[ ],
+    disiplayQuestion();
+    
 
 
 }
-
-var q2 ={
-    question:" ",
-    answers : [ ],
-    solution: answers[ ],
-
-
-}
-
-var q3 ={
-    question:" ",
-    answers : [ ],
-    solution: answers[ ],
+function disiplayQuestion(){
+    questions[currentQIndex];
 
 
 }
 
 
-var q4 ={
-    question:" ",
-    answers : [ ],
-    solution: answers[ ],
-
-
-}
-
-var q5 ={
-    question:" ",
-    answers : [ ],
-    solution: answers[ ],
-
-
-}
