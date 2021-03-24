@@ -2,6 +2,7 @@ var startButton = document.getElementById("start-button");
 var startPage = document.getElementById("start-page");
 var questionScreen = document.getElementById("question-screen");
 var currentQIndex = 0;
+var gameDuration = 90;
 var questions = [
   {
     question: "Commonly used data types DO NOT include ",
@@ -10,7 +11,7 @@ var questions = [
   },
   {
     question: "The conditions in an if/else statement is enclosed within____. ",
-    answers: ["quotes", "curly bracketts", "parentheses"],
+    answers: ["quotes", "curly bracketts", "parentheses", "a happy meal bag"],
     solution: "parentheses",
   },
   {
@@ -26,8 +27,8 @@ var questions = [
   {
     question:
       "String values must be enclosed within ___ when being assigned to variables. ",
-    answers: ["commas", "curly brackett", "quotes", "a waffle iron"],
-    solution: "yes",
+    answers: ["commas", "curly bracketts", "quotes", "a waffle iron"],
+    solution: "quotes",
   },
   {
     question:
@@ -45,6 +46,7 @@ var questions = [
 var questionText = document.getElementById("question-text");
 var choicesDiv = document.getElementById("choices");
 var verdict = document.getElementById("verdict");
+var gameTimer = document.getElementById("timer");
 
 startButton.addEventListener("click", startGame);
 
@@ -52,6 +54,7 @@ function startGame() {
   startPage.classList.add("hidden");
   questionScreen.classList.remove("hidden");
   disiplayQuestion();
+  timer();
 }
 function disiplayQuestion() {
   choicesDiv.textContent = "";
@@ -72,21 +75,32 @@ function evaluateAnswer(event) {
 
   if (userChoice === solution) {
     verdict.textContent = "Correct!";
-  } else {
-    verdict.textContent = "Incorrect!";
-  }
-
-  if (currentQIndex < questions.length - 1) {
-    currentQIndex++;
     var nextButton = document.createElement("button");
     nextButton.textContent = "Next Question";
     nextButton.addEventListener("click", disiplayQuestion);
     choicesDiv.appendChild(nextButton);
   } else {
+    verdict.textContent = "Incorrect!";
+    return;
+  }
+
+  if (currentQIndex < questions.length - 1) {
+    currentQIndex++;
+  } else {
     endGame();
   }
 }
 
-function endGame() {
-  console.log("game over");
+function timer() {
+  var time = setInterval(function () {
+    gameTimer.textContent = gameDuration;
+    gameDuration--;
+    if (gameDuration === 0) {
+      clearInterval(time);
+    }
+  }, 1000);
 }
+
+// function endGame() {
+//
+// }
