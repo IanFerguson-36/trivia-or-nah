@@ -3,6 +3,7 @@ var startPage = document.getElementById("start-page");
 var questionScreen = document.getElementById("question-screen");
 var currentQIndex = 0;
 var gameDuration = 90;
+var time;
 var questions = [
   {
     question: "Commonly used data types DO NOT include ",
@@ -51,10 +52,10 @@ var gameTimer = document.getElementById("timer");
 startButton.addEventListener("click", startGame);
 
 function startGame() {
+  timer();
   startPage.classList.add("hidden");
   questionScreen.classList.remove("hidden");
   disiplayQuestion();
-  timer();
 }
 function disiplayQuestion() {
   choicesDiv.textContent = "";
@@ -78,9 +79,9 @@ function evaluateAnswer(event) {
     var nextButton = document.createElement("button");
     nextButton.textContent = "Next Question";
     nextButton.addEventListener("click", disiplayQuestion);
-    choicesDiv.appendChild(nextButton);
   } else {
     verdict.textContent = "Incorrect!";
+    gameDuration = gameDuration - 15;
     return;
   }
 
@@ -92,7 +93,7 @@ function evaluateAnswer(event) {
 }
 
 function timer() {
-  var time = setInterval(function () {
+  time = setInterval(function () {
     gameTimer.textContent = gameDuration;
     gameDuration--;
     if (gameDuration === 0) {
@@ -101,6 +102,7 @@ function timer() {
   }, 1000);
 }
 
-// function endGame() {
-//
-// }
+function endGame() {
+  clearInterval(time);
+  choicesDiv.textContent = "Game over";
+}

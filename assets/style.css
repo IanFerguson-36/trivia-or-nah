@@ -1,3 +1,15 @@
-.hidden{
-    display: none;
+* {
+  font-family: "Times New Roman", Times, serif;
+  background-color: lightgray;
+  color: black;
+}
+
+.hidden {
+  display: none;
+}
+#choices {
+  align-items: initial;
+  justify-content: left;
+  flex-wrap: wrap;
+  size: inherit;
 }
