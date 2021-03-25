@@ -1,8 +1,12 @@
 var startButton = document.getElementById("start-button");
 var startPage = document.getElementById("start-page");
 var questionScreen = document.getElementById("question-screen");
+var endScreen = document.getElementById("form");
 var currentQIndex = 0;
 var gameDuration = 90;
+var submitButton = document.getElementById("submit-button");
+var initials = document.getElementById("initials");
+var scoreBoard = document.getElementById("score-sheet");
 var time;
 var questions = [
   {
@@ -76,17 +80,15 @@ function evaluateAnswer(event) {
 
   if (userChoice === solution) {
     verdict.textContent = "Correct!";
-    var nextButton = document.createElement("button");
-    nextButton.textContent = "Next Question";
-    nextButton.addEventListener("click", disiplayQuestion);
   } else {
     verdict.textContent = "Incorrect!";
     gameDuration = gameDuration - 15;
-    return;
   }
 
   if (currentQIndex < questions.length - 1) {
+    console.log("Hello world");
     currentQIndex++;
+    disiplayQuestion();
   } else {
     endGame();
   }
@@ -105,4 +107,15 @@ function timer() {
 function endGame() {
   clearInterval(time);
   choicesDiv.textContent = "Game over";
+  endScreen.classList.remove("hidden");
+  submitButton.addEventListener("click", scroreScreen);
+}
+
+function scroreScreen() {
+  localStorage.setItem("initials", initials.value);
+  getScores();
+}
+function getScores() {
+  var score = localStorage.getItem("initials");
+  console.log(score);
 }

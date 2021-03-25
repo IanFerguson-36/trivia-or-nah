@@ -2,8 +2,8 @@
 
 # Decription
 
-This is my consolidated Website
-![Portfolio  Site](./assets/photos/)
+This is my quiz, could not figure out how to display the high scores for the life of me and ran out of time
+![Portfolio  Site](/assets/quiz-screenshot.png)
 
 # Deployed Site
 
